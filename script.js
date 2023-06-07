@@ -1,4 +1,4 @@
-const mine = `<img class='hidden' id='mine' src='https://www.giantbomb.com/a/uploads/scale_medium/8/87790/3216800-icon_mine.png' height='70vmin'>`
+const mine = `<img class='' id='mine' src='https://www.giantbomb.com/a/uploads/scale_medium/8/87790/3216800-icon_mine.png' height='70vmin'>`
 // const flag = `<img id='number' src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Minesweeper_flag.svg/2048px-Minesweeper_flag.svg.png' height='70vmin'>`
 const PICTURES = {
     null: '',
@@ -49,11 +49,16 @@ init()
 function init(){
 counter = 0;
 board = [
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
 ]
 state = 'playing'
 document.querySelectorAll('.box').forEach(e => e.style.backgroundColor = 'gray')
@@ -157,7 +162,7 @@ function handleClickShovel(e){
         }
     }
     /// If the clicked space results in the 20 nonmine spaces being clicked
-    if(clickedSquareIndexes.length === 20) {
+    if(clickedSquareIndexes.length === 75) {
         state = 'winner'
         handleWin()
     }
@@ -235,11 +240,12 @@ renderItemIcon()
 
 function getBombLocations(){
 bombLocations = []
-    while(bombLocations.length < 5){
-        let rando = Math.floor(Math.random() * 25)
+    while(bombLocations.length < 25){
+        let rando = Math.floor(Math.random() * 100)
     if(!bombLocations.includes(rando) && rando !== firstMineLocation - 1){
         bombLocations.push(rando)
     }
+    console.log(bombLocations, board.flat())
 }
 }
 
@@ -249,9 +255,6 @@ function handleNULL(e) {
     console.log('CURRENT IDX', e, Number(e.id))
     let newBoard = board.flat()
     let idx = Number(e.id) ? Number(e.id) : e
-    console.log(idx, e, 'what is dis', clickedSquareIndexes.length)
-
-    console.log(clickedSquareIndexes.indexOf(idx), idx, 'are you calling me')
     if(clickedSquareIndexes.indexOf(idx) < 0){
         clickedSquareIndexes.push(idx)
         console.log(clickedSquareIndexes, 'bruv')
@@ -261,7 +264,7 @@ function handleNULL(e) {
 
 //Left fill
 for(let i = 2; i < newBoard.length; i++){
-let edgeNums = [25, 20, 15, 10, 5]
+let edgeNums = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10]
 let indexForNewBoard = idx - i 
 let indexForDOM = idx - i + 1
 let currentElem = document.getElementById(`${indexForDOM}`)
@@ -291,7 +294,7 @@ console.log(e, idx, newBoard[idx], 'WHERE DID I CLICK')
 // Right fill
 
 for(let i = 0; i < newBoard.length; i++){
-let edgeNums = [25, 20, 15, 10, 5]
+let edgeNums = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10]
 let indexForNewBoard = idx + i
 let indexForDOM = idx + i + 1
 let currentElem = document.getElementById(`${indexForDOM}`)
@@ -323,9 +326,9 @@ console.log(edgeNums.indexOf(idx + i) < 0, 'is it true', idx + i)
 //Top fill  
 
 
-for(let i = 1; i < 5; i++){
- let indexForNewBoard = idx - (5 * i) - 1
- let indexForDOM = idx - (5 * i)
+for(let i = 1; i < 10; i++){
+ let indexForNewBoard = idx - (10 * i) - 1
+ let indexForDOM = idx - (10 * i)
  let currentElem = document.getElementById(`${indexForDOM}`)
     
     if(typeof(newBoard[indexForNewBoard]) === 'number'){
@@ -353,25 +356,25 @@ for(let i = 1; i < 5; i++){
 
 
 //Top Right fill
-for(let i = 1; i < 5; i++){
-let edgeNums = [25, 20, 15, 10, 5]
-let floodNums = [21, 16, 11, 6, 1]
-let indexForNewBoard = idx - (5 * i)
-let indexForDOM = idx - (5 * i) + 1
+for(let i = 1; i < 10; i++){
+let edgeNums = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10]
+let floodNums = [91, 81, 71, 61, 51, 41, 31, 21, 11, 1]
+let indexForNewBoard = idx - (10 * i)
+let indexForDOM = idx - (10 * i) + 1
 let currentElem = document.getElementById(`${indexForDOM}`)
     if(typeof(newBoard[indexForNewBoard]) === 'number' && floodNums.indexOf(indexForDOM) < 0){
         currentElem.style.backgroundColor = lightGrey
         currentElem.classList.remove('hidden');
-        currentElem.innerText = board.flat()[idx - (5 * i)]
+        currentElem.innerText = board.flat()[idx - (10 * i)]
         console.log(currentElem, "TOP RIGHT FILL ")
         if(clickedSquareIndexes.indexOf(Number(indexForDOM)) < 0){
             clickedSquareIndexes.push(Number(indexForDOM))
             console.log(clickedSquareIndexes, 'this innnn')
         }
         break;
-    } else if(newBoard[idx - (5 * i)] !== null  || edgeNums.indexOf(idx) > -1){
+    } else if(newBoard[idx - (10 * i)] !== null  || edgeNums.indexOf(idx) > -1){
     break;
-    } else if (newBoard[idx - (5 * i)] === null){
+    } else if (newBoard[idx - (10 * i)] === null){
         currentElem.style.backgroundColor = lightGrey
         if(clickedSquareIndexes.indexOf(Number(indexForDOM)) < 0){
             clickedSquareIndexes.push(Number(indexForDOM))
@@ -387,11 +390,11 @@ let currentElem = document.getElementById(`${indexForDOM}`)
 
 
 //Top left fill
-for(let i = 1; i < 5; i++){
-let edgeNums = [21, 16, 11, 6, 1]
-let floodNums = [25, 20, 15, 10, 5]
-let indexForNewBoard = idx - (5 * i) - 2
-let indexForDOM = idx - (5 * i) - 1
+for(let i = 1; i < 10; i++){
+let edgeNums = [91, 81, 71, 61, 51, 41, 31, 21, 11, 1]
+let floodNums = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10]
+let indexForNewBoard = idx - (10 * i) - 2
+let indexForDOM = idx - (10 * i) - 1
 let currentElem = document.getElementById(`${indexForDOM}`)
 
 if(typeof(newBoard[indexForNewBoard]) === 'number' && floodNums.indexOf(indexForDOM) < 0){
@@ -421,9 +424,9 @@ if(typeof(newBoard[indexForNewBoard]) === 'number' && floodNums.indexOf(indexFor
 
 
 //Bottom fill
-for(let i = 1; i < 5; i++){
-let indexForNewBoard = idx + (5 * i) - 1;
-let indexForDOM = idx + (5 * i)
+for(let i = 1; i < 10; i++){
+let indexForNewBoard = idx + (10 * i) - 1;
+let indexForDOM = idx + (10 * i)
 let currentElem = document.getElementById(`${indexForDOM}`)
 
 if(typeof(newBoard[indexForNewBoard]) === 'number'){
@@ -456,12 +459,12 @@ if(typeof(newBoard[indexForNewBoard]) === 'number'){
 
 
 //Bottom Left Dia fill
-for(let i = 1; i < 5; i++){
-    let indexForNewBoard = idx + (5 * i) - 2
-    let indexForDOM = idx + (5 * i) - 1
+for(let i = 1; i < 10; i++){
+    let indexForNewBoard = idx + (10 * i) - 2
+    let indexForDOM = idx + (10 * i) - 1
     let currentElem = document.getElementById(`${indexForDOM}`)
-    let edgeNums = [21, 16, 11, 6, 1]
-    let floodNums = [25, 20, 15, 10, 5]
+    let edgeNums = [91, 81, 71, 61, 51, 41, 31, 21, 11, 1]
+    let floodNums = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10]
 
 
 
@@ -488,11 +491,11 @@ for(let i = 1; i < 5; i++){
 
 
 //Bottom Right Dia fill
-for(let i = 1; i < 5; i++){
-    let edgeNums = [25, 20, 15, 10, 5]
-    let floodNums = [21, 16, 11, 6, 1]
-    let indexForNewBoard = idx + (5 * i)
-    let indexForDOM = idx + (5 * i) + 1
+for(let i = 1; i < 10; i++){
+    let edgeNums = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10]
+    let floodNums = [91, 81, 71, 61, 51, 41, 31, 21, 11, 1]
+    let indexForNewBoard = idx + (10 * i)
+    let indexForDOM = idx + (10 * i) + 1
     let currentElem = document.getElementById(`${indexForDOM}`)
 
 
@@ -522,7 +525,7 @@ for(let i = 1; i < 5; i++){
 
 
 
-if(clickedSquareIndexes.length >= 20) {
+if(clickedSquareIndexes.length >= 75) {
     state = 'winner'
     handleWin()
 }
@@ -590,11 +593,16 @@ getBombLocations()
 
 /// board is redeclared here in case of a bomb on first click. Automatically allows a redo on the board organization to avoid 10 bombs
 board = [
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null, null],
 ]
 
 let newBoard = board.flat()
@@ -606,7 +614,7 @@ bombLocations.forEach(e => newBoard[e] = 'mine')
 while(newBoard.length){
     innerArr.push(newBoard.shift())
     // console.log(innerArr)
-    if(innerArr.length === 5){
+    if(innerArr.length === 10){
         final.push(innerArr)
         innerArr = []
     }
@@ -631,7 +639,7 @@ for(let i = 0; i< board.length; i++){
     }
 
         /// Right of Mine
-    if(board[i][j] === 'mine' && j < 4){
+    if(board[i][j] === 'mine' && j < 9){
         if(board[i][j + 1] !== 'mine'){
             if(board[i][j + 1] === null){
                 board[i][j + 1] = 1
@@ -642,7 +650,7 @@ for(let i = 0; i< board.length; i++){
 
     }
 
-        /// Top of Mine
+    //     /// Top of Mine
     if(board[i][j] === 'mine' && i > 0){
             if(board[i - 1][j] !== 'mine'){
                 if(board[i - 1][j] === null){
@@ -654,8 +662,8 @@ for(let i = 0; i< board.length; i++){
     
     }
 
-    /// Right Top Dia
-    if(board[i][j] === 'mine' && i > 0 && j < 4){
+    // /// Right Top Dia
+    if(board[i][j] === 'mine' && i > 0 && j < 9){
         if(board[i - 1][j + 1] !== 'mine'){
             if(board[i - 1][j + 1] === null){
                 board[i - 1][j + 1] = 1
@@ -665,7 +673,7 @@ for(let i = 0; i< board.length; i++){
         }
     }
 
-     /// Right clickedSquareIndexes Dia
+    //  /// Right clickedSquareIndexes Dia
      if(board[i][j] === 'mine' && i > 0 && j > 0){
         if(board[i - 1][j - 1] !== 'mine'){
             if(board[i - 1][j - 1] === null){
@@ -676,8 +684,8 @@ for(let i = 0; i< board.length; i++){
         }
     }
 
-     /// Below Mine
-     if(board[i][j] === 'mine' && i < 4){
+    //  /// Below Mine
+     if(board[i][j] === 'mine' && i < 9){
         if(board[i + 1][j] !== 'mine'){
             if(board[i + 1][j] === null){
                 board[i + 1][j] = 1
@@ -686,8 +694,8 @@ for(let i = 0; i< board.length; i++){
             }
         }
 
-    /// Below Mine Right
-    if(board[i][j] === 'mine' && i < 4 && j < 4){
+    // /// Below Mine Right
+    if(board[i][j] === 'mine' && i < 9 && j < 9){
         if(board[i + 1][j + 1] !== 'mine'){
             if(board[i + 1][j + 1] === null){
                 board[i + 1][j + 1] = 1
@@ -697,8 +705,8 @@ for(let i = 0; i< board.length; i++){
         }
     }
 
-    // /// Below Mine clickedSquareIndexes
-    if(board[i][j] === 'mine' && i < 4 && j > 0){
+    // // /// Below Mine clickedSquareIndexes
+    if(board[i][j] === 'mine' && i < 9 && j > 0){
         if(board[i + 1][j - 1] !== 'mine'){
             if(board[i + 1][j - 1] === null){
                 board[i + 1][j - 1] = 1

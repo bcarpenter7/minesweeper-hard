@@ -50,11 +50,11 @@ h1 {
     color: rgb(156, 116, 199);
 }
 
-@media only screen and (min-width: 481px){
+/* @media only screen and (min-width: 481px){
    #message {
         font-size: 3vmin;
     }
-}
+} */
 
 @media only screen and (min-width: 768px){
     #message {
@@ -65,42 +65,43 @@ h1 {
 
 #boardLayout {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    gap: .25vmin;
+    gap: .2vmin;
 }
 
 .numbers {
-    height: 17vmin;
-    width: 17vmin;
+    height: 8vmin;
+    width: 8vmin;
 }
 
-@media only screen and (min-width: 481px){
+/* @media only screen and (min-width: 481px){
     .numbers {
         height: 11vmin;
         width: 11vmin;
     }
-}
+} */
 
 
 .box {
     background-color: gray;
-    height: 17vmin;
-    width: 17vmin;
-    font-size: 15vmin;
+    height: 8vmin;
+    width: 8vmin;
+    font-size: 5vmin;
     text-align: center;
     color: black;
 }
 
 
+/* 
 @media only screen and (min-width: 481px) {
     .box {
         height: 11vmin;
         width: 11vmin;
         font-size: 10vmin;
-        /* text-align: center; */
     }
-}
+} 
+*/
 
 
 @media only screen and (min-width: 768px){
@@ -256,6 +257,9 @@ h1 {
     padding: 2vmin;
 }
 
+#mine {
+    height: 8vmin;
+}
 
 
 @media only screen and (max-width: 400px) {
@@ -275,7 +279,7 @@ h1 {
 
 
 
-@media only screen and (min-width: 481px) {
+/* @media only screen and (min-width: 481px) {
     #reset {
         font-size: 3vmin;
         padding: 2vmin;
@@ -288,7 +292,7 @@ h1 {
     #number {
         height: 11vmin;
     }
-}
+} */
 
 /* Maybe unnecessary */
 @media only screen and (min-width: 768px) {
