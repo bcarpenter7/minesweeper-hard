@@ -87,7 +87,7 @@ h1 {
     background-color: gray;
     height: 8vmin;
     width: 8vmin;
-    font-size: 5vmin;
+    font-size: 7vmin;
     text-align: center;
     color: black;
 }
@@ -278,8 +278,22 @@ h1 {
 }
 
 
+@media only screen and (min-width: 410px) {
+    #reset {
+        font-size: 3vmin;
+        padding: 2vmin;
+        margin-top: -2vmin;
+    }
+    #mine {
+        height: 8vmin;
+    } 
 
-/* @media only screen and (min-width: 481px) {
+    #number {
+        height: 8vmin;
+    }
+}
+
+@media only screen and (min-width: 481px) {
     #reset {
         font-size: 3vmin;
         padding: 2vmin;
@@ -292,7 +306,7 @@ h1 {
     #number {
         height: 11vmin;
     }
-} */
+}
 
 /* Maybe unnecessary */
 @media only screen and (min-width: 768px) {
