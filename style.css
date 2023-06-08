@@ -36,8 +36,8 @@ h1 {
 
 @media only screen and (min-width: 768px){
     h1 {
-        font-size: 8vmin;
-        margin-top: 3vmin;
+        font-size: 7vmin;
+        margin-top: 2vmin;
         margin-bottom: -3vmin;
     }
 }
@@ -75,14 +75,6 @@ h1 {
     width: 8vmin;
 }
 
-/* @media only screen and (min-width: 481px){
-    .numbers {
-        height: 11vmin;
-        width: 11vmin;
-    }
-} */
-
-
 .box {
     background-color: gray;
     height: 8vmin;
@@ -93,18 +85,24 @@ h1 {
 }
 
 
-/* 
+
 @media only screen and (min-width: 481px) {
     .box {
-        height: 11vmin;
-        width: 11vmin;
-        font-size: 10vmin;
+        height: 7vmin;
+        width: 7vmin;
+        font-size: 6vmin;
     }
 } 
-*/
+
 
 
 @media only screen and (min-width: 768px){
+    .box {
+        height: 5.5vmin;
+        width: 5.5vmin;
+        font-size: 4.5vmin;
+    }
+
     .box:hover {
     transform: scale(1.02);
     }
@@ -160,7 +158,7 @@ h1 {
 
 @media only screen and (min-width: 481px) {
     #flagItem {
-       height: 10vmin;
+       height: 7vmin;
     }
 }
 
@@ -177,7 +175,7 @@ h1 {
 
 @media only screen and (min-width: 481px) {
     #shovelItem {
-      height: 10vmin;
+      height: 7vmin;
       padding: 1vmin;  
 
     }
@@ -198,7 +196,8 @@ h1 {
 
 @media only screen and (min-width: 481px) {
     #choice-holder {
-        height: 15vmin;
+        height: 13vmin;
+        margin-top: -3vmin;
     }
 }
 
@@ -262,21 +261,23 @@ h1 {
 }
 
 
-@media only screen and (max-width: 400px) {
+
+
+
+@media only screen and (max-width: 410px) {
     #reset {
         font-size: 3vmin;
         padding: 2vmin;
         margin-top: -2vmin;
     }
     #mine {
-        height: 17vmin;
+        height: 8vmin;
     } 
 
     #number {
-        height: 17vmin;
+        height: 8vmin;
     }
 }
-
 
 @media only screen and (min-width: 410px) {
     #reset {
@@ -300,20 +301,28 @@ h1 {
         margin-top: -2vmin;
     }
     #mine {
-        height: 11vmin;
+        height: 7vmin;
     } 
 
     #number {
-        height: 11vmin;
+        height: 7vmin;
     }
 }
 
-/* Maybe unnecessary */
+
 @media only screen and (min-width: 768px) {
     #reset {
         font-size: 3vmin;
         padding: 1vmin;
         margin-top: -3vmin;
+    }
+    /* controls flag size on mine spot */
+    #mine {
+        height: 5.5vmin;
+    } 
+    /* controls flag size on number spot */
+    #number {
+        height: 5.5vmin;
     }
 }
 
