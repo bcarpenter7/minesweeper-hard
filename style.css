@@ -365,3 +365,15 @@ h1 {
     
 }
 
+#links {
+    display: flex;
+    margin-top: -3vmin;
+    flex-direction: column;
+    gap: 3vmin;
+    font-size: 4vmin;
+    color:rgb(156, 116, 199);
+}
+
+#bannerBottom {
+    font-size: 4vmin;
+}
