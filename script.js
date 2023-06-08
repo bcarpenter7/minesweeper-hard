@@ -574,6 +574,8 @@ if(copyOfClicked.length){
     handleNULL(copyOfClicked[0])
 } else {
     console.log('end IT', copyOfClicked, clickedSquareIndexes.length, clickedSquareIndexes)
+    console.log('testing below')
+    copyOfClicked = undefined;
     return
 }
 
